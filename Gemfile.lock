@@ -1,6 +1,5 @@
 GEM
-  remote: http://rubygems.org/
-  remote: http://gems.github.com/
+  remote: https://rubygems.org/
   specs:
     actionmailer (4.0.0)
       actionpack (= 4.0.0)
@@ -51,6 +50,9 @@ GEM
     execjs (2.0.2)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     hashie (2.0.5)
     hike (1.2.3)
     httpauth (0.2.0)
@@ -81,6 +83,8 @@ GEM
     omniauth (1.1.4)
       hashie (>= 1.2, < 3)
       rack
+    omniauth-facebook (1.6.0)
+      omniauth-oauth2 (~> 1.1)
     omniauth-google-oauth2 (0.2.1)
       omniauth (~> 1.0)
       omniauth-oauth2
@@ -151,8 +155,10 @@ DEPENDENCIES
   aws-sdk
   coffee-rails (~> 4.0.0)
   devise
+  figaro
   jbuilder (~> 1.2)
   jquery-rails
+  omniauth-facebook
   omniauth-google-oauth2
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)

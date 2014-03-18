@@ -1,5 +1,4 @@
-source 'http://rubygems.org'
-source 'http://gems.github.com'
+source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
@@ -29,8 +28,11 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem "omniauth-google-oauth2"
+gem 'omniauth-facebook'
 
 gem "devise"
+
+gem "figaro"
 
 gem "aws-sdk"
 
