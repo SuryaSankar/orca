@@ -2,9 +2,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 	def append_or_create
 	    @user = User.find_by email: sign_up_params[:email]
 	    if @user.nil?
-		    Authentication.create provider: "synapz", uid: self.resource.id
-		    flash[:waiting_for_confirmation] = !self.resource.confirmed?
-	  	  create
+		    auth=Authentication.create provider: "synapz"
+	  	  create do |user| 
+          auth.update_attributes user_id: user.id;  
+          flash[:waiting_for_confirmation] = !user.confirmed?;
+        end
 	    else
 		    providers = @user.authentications.map{ |a| a.provider }
 		    flash[:email_registered_already] = !providers.empty?

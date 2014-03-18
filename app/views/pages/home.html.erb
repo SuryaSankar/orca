@@ -90,7 +90,18 @@
       <div class="container">
         <h1>SynapZ</h1>
         <p>The world's foremost adaptive learning platform</p>
-        <p><a class="btn btn-primary btn-lg" role="button">Sign Up Now</a></p>
+         <% if !user_signed_in? then%>
+			      <% if flash[:waiting_for_confirmation] then %>
+				       <div class="notice"><h5>IMPORTANT !!</h5> <%= flash[:notice] %></div>
+			      <% elsif flash[:email_registered_already] then %>
+				       <div class="notice"><h5>IMPORTANT !!</h5> <%= flash[:notice] %></div>
+      Sign in via <p><i class="icon-facebook-sign"></i> <%= link_to  user_omniauth_authorize_path(:facebook) do %> Your Facebook Account <% end %> &nbsp;&nbsp;&nbsp;Or</p><p><i class="icon-google-plus-sign"></i> <%= link_to  user_omniauth_authorize_path(:google_oauth2) do %> Your Gmail Account <% end %></p>	
+            <% else %>
+            <p>
+            <a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#signup_modal"> Sign Up</a>        
+            </p>
+            <% end %>
+          <% end %>
       </div>
     </div>
 
@@ -98,29 +109,30 @@
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4">
-          <h2>Heading</h2>
+          <h2>Students</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
         <div class="col-md-4">
-          <h2>Heading</h2>
+          <h2>Universities</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
        </div>
         <div class="col-md-4">
-          <h2>Heading</h2>
+          <h2>Employers</h2>
           <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
       </div>
 
       <hr>
-
+      <%= render partial: 'users/partials/signup_modal' %>
       <footer>
         <p>&copy; SynapZ 2014</p>
       </footer>
     </div> <!-- /container -->
-
+    <!-- partials -->
+    
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

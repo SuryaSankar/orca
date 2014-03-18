@@ -33,6 +33,7 @@ gem 'omniauth-facebook'
 gem "devise"
 
 gem "figaro"
+gem "simple_form"
 
 gem "aws-sdk"
 
